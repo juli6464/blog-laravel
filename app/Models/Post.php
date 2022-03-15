@@ -14,10 +14,13 @@ class Post extends Model
     //relacion uno a muchos inversa
 
     public function user() {
-        return $this->belongsTo(User::class);
+        // return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\User');
     }
     public function category() {
-        return $this->belongsTo(Category::class);
+        // return $this->belongsTo(Category::class);
+        return $this->belongsTo('App\Models\Category');
+
     }
 
     //relacion muchos a muchos
@@ -31,4 +34,10 @@ class Post extends Model
     public function image() {
         return $this->morphOne(Image::class, 'imageable');
     }
+
+    //relacion uno a uno polimorfica
+    public function  comments() {
+        return $this->morphMany('App\Models\Comment', 'commentable');
+    }
+
 }

@@ -62,9 +62,27 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    //relacion uno a muchos
 
-    public function posts() {
-        return $this->hasMany(Post::class);
+    //relacion uno  a uno
+    public function profile(){
+        return $this->hasOne('App\Models\Profile');
     }
+
+        //relacion uno a muchos
+
+        public function posts() {
+            // return $this->hasMany(Post::class);
+            return $this->hasMany('App\Models\Post');
+        }
+
+
+        public function videos() {
+            // return $this->hasMany(Post::class);
+            return $this->hasMany('App\Models\Video');
+        }
+
+        public function comments() {
+            // return $this->hasMany(Post::class);
+            return $this->hasMany('App\Models\Comment');
+        }
 }
